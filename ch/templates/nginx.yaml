@@ -7,9 +7,9 @@ data:
     server {
     	server_name kubnginxname.ddns.net;
     	listen 80;
-        #root /etc/nginx/example.com;
+      
     	location / {
-            root /etc/nginx/example.com;
+          root /etc/nginx/example.com;
     	    index  example.html;
     	}
     	location /anotherport {
@@ -22,7 +22,6 @@ data:
           proxy_set_header X-Real-IP  $remote_addr;
           proxy_set_header X-Forwarded-For $remote_addr;
           proxy_set_header Host $host;
-          #proxy_pass http://kubnginxname.ddns.net:30009/;
     	}	
     	location ~ /\. {
         	deny all;
@@ -121,9 +120,9 @@ spec:
               #- containerPort: 8080
               #name: apache
               #volumeMounts:
-              #- name: apache-conf
-              #mountPath: /etc/nginx/example.com/index.php
-              #subPath: index.php
+          - name: apache-conf
+            mountPath: /etc/nginx/example.com/index.php
+            subPath: index.php
             
         readinessProbe:
           tcpSocket:
@@ -145,9 +144,9 @@ spec:
       - name: nginx-conf
         configMap:
           name: nginx-conf
-            #- name: apache-conf
-            #configMap:
-            #name: apache-conf
+      - name: apache-conf
+        configMap:
+        name: apache-conf
             #items:
             #- key: index.php
             #path: index.php
