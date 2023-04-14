@@ -121,8 +121,8 @@ spec:
               #name: apache
               #volumeMounts:
           - name: apache-conf
-            mountPath: /etc/nginx/example.com
-            #subPath: index.php
+            mountPath: /etc/nginx/example.com/index.php
+            subPath: index.php
             
         readinessProbe:
           tcpSocket:
@@ -147,9 +147,9 @@ spec:
       - name: apache-conf
         configMap:
         name: apache-conf
-            #items:
-            #- key: index.php
-            #path: index.php
+           items:
+            - key: index.php
+              path: index.php
 
 ---
 apiVersion: v1
