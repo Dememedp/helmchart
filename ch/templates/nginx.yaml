@@ -147,7 +147,7 @@ spec:
       - name: apache-conf
         configMap:
         name: apache-conf
-           items:
+          items:
             - key: index.php
               path: index.php
 
