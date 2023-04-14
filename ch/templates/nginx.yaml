@@ -121,8 +121,8 @@ spec:
               #name: apache
               #volumeMounts:
           - name: apache-conf
-            mountPath: /etc/nginx/example.com/index.php
-            subPath: index.php
+            mountPath: /etc/nginx/example.com
+            #subPath: index.php
             
         readinessProbe:
           tcpSocket:
